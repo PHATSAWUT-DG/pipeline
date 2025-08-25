@@ -27,6 +27,10 @@ pipeline {
                         sh 'sleep 2'
                     }
                 }
+            }
+        }
+        stage('OS Tests in Parallel') {
+            parallel {
                 stage('Linux Test') {
                     steps {
                         echo 'Testing on Linux...'
