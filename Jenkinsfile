@@ -16,5 +16,14 @@ pipeline {
                 echo "Release stage."
             }
         }
+         post {
+            success {
+                echo 'Pipeline completed successfully 🎉'
+            }
+            failure {
+                echo 'Pipeline failed ❌'
+            }
+}
+
     }
 }
