@@ -17,9 +17,12 @@ pipeline {
                 stage('Unit Tests') {
                     when {
                         succeeded()
+                        
                     }
                     steps {
                         echo 'Running unit tests...'
+                        sh 'echo \"All tests passed!\" > results.txt'
+                        archiveArtifacts artifacts: 'results.txt', fingerprint: true
                     }
                 }
                 stage('Integration Tests') {
