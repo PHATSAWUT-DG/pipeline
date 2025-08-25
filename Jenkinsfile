@@ -1,28 +1,26 @@
-pipeline {
+ pipeline {
     agent any
     stages {
-        stage("Build") {
+        stage('Build') {
             steps {
-                echo "Build stage."
+                echo 'Building application...'
             }
         }
-        stage("Test") {
-            steps {
-                echo "Test stage."
+        stage('Test in Parallel') {
+            parallel {
+                stage('Unit Tests') {
+                    steps {
+                        echo 'Running unit tests...'
+                        sh 'sleep 5'
+                    }
+                }
+                stage('Integration Tests') {
+                    steps {
+                        echo 'Running integration tests...'
+                        sh 'sleep 5'
+                    }
+                }
             }
-        }
-        stage("Release") {
-            steps {
-                echo "Release stage."
-            }
-        }
-    }
-    post {
-        success {
-            echo 'Pipeline completed successfully 🎉'
-        }
-        failure {
-            echo 'Pipeline failed ❌'
         }
     }
 }
