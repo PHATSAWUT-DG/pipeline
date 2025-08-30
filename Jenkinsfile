@@ -41,8 +41,7 @@ pipeline {
                 docker stop maven-build-temp
                 docker rm maven-build-temp
                 '''
-            }
-                        steps {
+                
                 sh '''
                 # Create Maven container for packaging
                 docker create --name maven-package-temp -w /app maven:3.9.9 sleep 30
