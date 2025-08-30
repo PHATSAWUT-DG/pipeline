@@ -31,18 +31,33 @@ pipeline {
                 script {
                     try {
                         sh '''
-                        # Use correct workspace path and check if pom.xml exists
-                        if [ -f "${WORKSPACE}/pom.xml" ]; then
-                            echo "Found pom.xml in workspace"
-                            docker run --rm -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
-                              mvn clean compile test -DskipTests=false
-                        else
-                            echo "pom.xml not found in workspace, listing files:"
-                            ls -la "${WORKSPACE}"
-                            exit 1
-                        fi
+                        # Alternative approach: Use docker cp instead of volume mounts
+                        echo "=== Host workspace contents ==="
+                        ls -la "${WORKSPACE}"
+                        
+                        # Create a temporary container
+                        docker create --name maven-build-temp -w /app maven:3.9.9 sleep 30
+                        docker start maven-build-temp
+                        
+                        # Copy files to container
+                        docker cp "${WORKSPACE}/." maven-build-temp:/app/
+                        
+                        # Verify files are copied
+                        docker exec maven-build-temp sh -c "echo 'Container contents:' && ls -la /app && echo 'pom.xml check:' && ls -la /app/pom.xml"
+                        
+                        # Run Maven build
+                        docker exec maven-build-temp mvn clean compile test -DskipTests=false
+                        
+                        # Cleanup
+                        docker stop maven-build-temp
+                        docker rm maven-build-temp
                         '''
                     } catch (Exception e) {
+                        sh '''
+                        # Cleanup on error
+                        docker stop maven-build-temp 2>/dev/null || true
+                        docker rm maven-build-temp 2>/dev/null || true
+                        '''
                         echo "Build failed: ${e.getMessage()}"
                         throw e
                     }
@@ -55,16 +70,30 @@ pipeline {
                 script {
                     try {
                         sh '''
-                        # Package the application
-                        if [ -f "${WORKSPACE}/pom.xml" ]; then
-                            docker run --rm -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
-                              mvn package -DskipTests=true
-                        else
-                            echo "pom.xml not found for packaging"
-                            exit 1
-                        fi
+                        # Create container for packaging
+                        docker create --name maven-package-temp -w /app maven:3.9.9 sleep 30
+                        docker start maven-package-temp
+                        
+                        # Copy files to container
+                        docker cp "${WORKSPACE}/." maven-package-temp:/app/
+                        
+                        # Run Maven package
+                        docker exec maven-package-temp mvn package -DskipTests=true
+                        
+                        # Copy target folder back to workspace
+                        mkdir -p "${WORKSPACE}/target" || true
+                        docker cp maven-package-temp:/app/target/. "${WORKSPACE}/target/" || echo "No target directory to copy"
+                        
+                        # Cleanup
+                        docker stop maven-package-temp
+                        docker rm maven-package-temp
                         '''
                     } catch (Exception e) {
+                        sh '''
+                        # Cleanup on error
+                        docker stop maven-package-temp 2>/dev/null || true
+                        docker rm maven-package-temp 2>/dev/null || true
+                        '''
                         echo "Package failed: ${e.getMessage()}"
                         throw e
                     }
@@ -77,21 +106,30 @@ pipeline {
                 script {
                     try {
                         sh '''
-                        # Run SonarQube analysis with network access
-                        if [ -f "${WORKSPACE}/pom.xml" ]; then
-                            docker run --rm --network host \
-                              -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
-                              mvn clean verify sonar:sonar \
-                              -Dsonar.projectKey=${PROJECT_KEY} \
-                              -Dsonar.projectName="${PROJECT_NAME}" \
-                              -Dsonar.host.url=${SONAR_HOST_URL} \
-                              -Dsonar.token=${SONAR_TOKEN}
-                        else
-                            echo "pom.xml not found for SonarQube analysis"
-                            exit 1
-                        fi
+                        # Create container for SonarQube analysis with network access
+                        docker create --name maven-sonar-temp --network host -w /app maven:3.9.9 sleep 30
+                        docker start maven-sonar-temp
+                        
+                        # Copy files to container
+                        docker cp "${WORKSPACE}/." maven-sonar-temp:/app/
+                        
+                        # Run SonarQube analysis
+                        docker exec maven-sonar-temp mvn clean verify sonar:sonar \
+                          -Dsonar.projectKey=${PROJECT_KEY} \
+                          -Dsonar.projectName="${PROJECT_NAME}" \
+                          -Dsonar.host.url=${SONAR_HOST_URL} \
+                          -Dsonar.token=${SONAR_TOKEN}
+                        
+                        # Cleanup
+                        docker stop maven-sonar-temp
+                        docker rm maven-sonar-temp
                         '''
                     } catch (Exception e) {
+                        sh '''
+                        # Cleanup on error
+                        docker stop maven-sonar-temp 2>/dev/null || true
+                        docker rm maven-sonar-temp 2>/dev/null || true
+                        '''
                         echo "SonarQube analysis failed: ${e.getMessage()}"
                         throw e
                     }
@@ -104,10 +142,17 @@ pipeline {
         always {
             script {
                 try {
-                    // Clean up any remaining containers (if accessible)
+                    // Clean up any remaining containers
                     sh '''
-                    docker ps -aq --filter "name=maven-" | xargs -r docker stop || echo "No containers to stop"
-                    docker ps -aq --filter "name=maven-" | xargs -r docker rm -f || echo "No containers to clean"
+                    # Stop and remove any leftover containers
+                    for container in maven-build-temp maven-package-temp maven-sonar-temp; do
+                        docker stop $container 2>/dev/null || echo "Container $container not running"
+                        docker rm $container 2>/dev/null || echo "Container $container not found"
+                    done
+                    
+                    # Generic cleanup for any maven containers
+                    docker ps -aq --filter "name=maven-" | xargs -r docker stop 2>/dev/null || echo "No maven containers to stop"
+                    docker ps -aq --filter "name=maven-" | xargs -r docker rm -f 2>/dev/null || echo "No maven containers to clean"
                     '''
                 } catch (Exception e) {
                     echo "Cleanup warning: ${e.getMessage()}"

@@ -1,0 +1,283 @@
+Started by user [8mha:////4BkXxJ8Wg9gHqIkyfnav4O6UNzGzf7tcGo1GNXSOOBtiAAAAlx+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAzWEgZu/dLi1CL9xJTczDwAj6GcLcAAAAA=[0madmin
+Obtained Jenkinsfile from git https://github.com/PHATSAWUT-DG/pipeline.git
+[8mha:////4MtwfTC0fi75u5XvsPeXEqb5g/bf6m3ql9yqagR2zQt/AAAAoh+LCAAAAAAAAP9tjTEOwjAQBM8BClpKHuFItIiK1krDC0x8GCfWnbEdkooX8TX+gCESFVvtrLSa5wtWKcKBo5UdUu8otU4GP9jS5Mixv3geZcdn2TIl9igbHBs2eJyx4YwwR1SwULBGaj0nRzbDRnX6rmuvydanHMu2V1A5c4MHCFXMWcf8hSnC9jqYxPTz/BXAFEIGsfuclm8zQVqFvQAAAA==[0m[Pipeline] Start of Pipeline
+[8mha:////4LygdX6mFHWUahJx2TzanGD07+72xuGtA2EbE/NuRwGaAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycohUghExsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jduZBmjwAAAAA==[0m[Pipeline] node
+Running on [8mha:////4CjXSFRQMLdLbvw63Lcm4OjGxUX1/szMmXGyZkfgm57NAAAAoR+LCAAAAAAAAP9b85aBtbiIQTGjNKU4P08vOT+vOD8nVc83PyU1x6OyILUoJzMv2y+/JJUBAhiZGBgqihhk0NSjKDWzXb3RdlLBUSYGJk8GtpzUvPSSDB8G5tKinBIGIZ+sxLJE/ZzEvHT94JKizLx0a6BxUmjGOUNodHsLgAz2EgZR/eT83ILSktQifY2k0sycEt3MPE19AHHxbH3KAAAA[0mJenkins in /var/jenkins_home/workspace/6510110357
+[8mha:////4GDBRKtTWW7NNc4A30Sq+MUDkeLyxsp93YDGDqiyWffdAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gA0xsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jfoP95RwAAAAA==[0m[Pipeline] {
+[8mha:////4A+N9cPYlzFRxPeG8YBv/pW5aIdG/xeaRgjDPgIIIfDVAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0gQkxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jc09154wAAAAA==[0m[Pipeline] stage
+[8mha:////4I5Cc6eAVIifSXDlzn25wd8oCxg8cdVa8bg2jUesNbQoAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+KOrAycoh0ggUxsUZZOEFIQkgb/d8mKe3EibgadyBQiQlLlmxL1nu+oE4RjhQdby12HpP2vA+jK4lPFLtroIm3dOGaMFGwXNpJkrGnpUrKFhaxClYC1hZ1oOTRZdiIVt1VExS65pxj2Q4CKm8GeAAThZxVzN8yR9jeRpMIf5y/AJj7DGxXvP/86jek7ggRwAAAAA==[0m[Pipeline] { (Declarative: Checkout SCM)
+[8mha:////4LL7zkDt5MX6C/TmhQNlPveuVkUODhfaFxFKema14rlVAAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQTbaWGsbAmNJ0AWEZb8zwLrbuWJvJp3kLiJlZNMMm+a93rDOic4UbLcG+wdZu14DKOti0+U+lugiXu6ck2YKRguzSSpM+cFJRUDS1gDKwEbgzpQdmgLbIVXD9UGhba9lFS/o4DGdQM8gYlqLiqVL8wJdvexy4Q/z18BzLEA29ce4gfg7KmOvAAAAA==[0m[Pipeline] checkout
+The recommended git tool is: git
+No credentials specified
+ > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/6510110357/.git # timeout=10
+Fetching changes from the remote Git repository
+ > git config remote.origin.url https://github.com/PHATSAWUT-DG/pipeline.git # timeout=10
+Fetching upstream changes from https://github.com/PHATSAWUT-DG/pipeline.git
+ > git --version # timeout=10
+ > git --version # 'git version 2.39.5'
+ > git fetch --tags --force --progress -- https://github.com/PHATSAWUT-DG/pipeline.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git rev-parse refs/remotes/origin/main^{commit} # timeout=10
+Checking out Revision bd3bb72ab07cb8714b1db4d9bf5458760049a01f (refs/remotes/origin/main)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f bd3bb72ab07cb8714b1db4d9bf5458760049a01f # timeout=10
+Commit message: "Add initial queue state configuration for Jenkins"
+ > git rev-list --no-walk ad1675de04506ddedee5e81c39d8a3b25b9657aa # timeout=10
+[8mha:////4DzenLNW6OJrd/iLsN+RUeRmDvTeXNjtrYxlAsd922CWAAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQTbGRNjZUtoPAGyiLDkfxZYdytP5NW8g8RNrJxkknnTvNcb1jnBiZLl3mDvMGvHYxhtXXyi1N8CTdzTlWvCTMFwaSZJnTkvKKkYWMIaWAnYGNSBskNbYCu8eqg2KLTtpaT6HQU0rhvgCUxUc1GpfGFOsLuPXSb8ef4KYI6xADvU7j9Dg2gqvAAAAA==[0m[Pipeline] }
+[8mha:////4HapE73Vu/bQGNbFt6kD0xNFGtXoFMYO8U9p7qXwmndFAAAAoh+LCAAAAAAAAP9tjTEOAiEURD9rLGwtPQRbWRhjZUtoPAGyiLDkfxZYdytP5NW8g8RNrJxkknnTvNcb1jnBiZLl3mDvMGvHYxhtXXyi1N8CTdzTlWvCTMFwaSZJnTkvKKkYWMIaWAnYGNSBskNbYCu8eqg2KLTtpaT6HQU0rhvgCUxUc1GpfGFOsLuPXSb8ef4KYI6xADvU7j9J+wGOvAAAAA==[0m[Pipeline] // stage
+[8mha:////4FqqprFMW0IOdcMeCyKWxIV9L8qVAN7tw9T+RO/X6GgqAAAAph+LCAAAAAAAAP9tjTEOwjAQBM9BKWgpeYQDEh2iorXc8AITG+PEugv2haTiRXyNPxCIRMVWOyut5vmCMic4UPKycdgGzHWQXez91ORAqb1EGmRDZ1kTZopOajdosu44oyZ2MEcUsFCwdFhHygE9w0o15m6qaNBXJ07TtldQBHuDBwg1mdkk/sKYYH3tbSb8ef4KYOwYxI6h2G4+x/INtuQqUcEAAAA=[0m[Pipeline] withEnv
+[8mha:////4EZCaVJ5FEbAlqA1x9CsfWZ1vPMu6ewmOh/ueRDInhCGAAAApR+LCAAAAAAAAP9tjTEOwjAUQ3+DOrAycoiUzoiJNerCCUITQtLo/zZJSSdOxNW4Ay2VmPBg2Zas93pDGQOcKBjuNHYWY2t570czJ54pdDdPmTu68pYwkte80bkhpc9rbShpWFUw2AjYamw9RYsmwU44+ZCVl2iqSwrzdhTArBrgCYWYyUmG9C1TgP19VJHwx/kLgKlPwOrDYvXyLD8BobDcwgAAAA==[0m[Pipeline] {
+[8mha:////4BXEX71yLdsduO2B9wQyuHjJ+ExGXkirGVBQBQ13j27cAAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUZUVMrFEWThCaEJJG/7dJSjpxIq7GHWipxIQHy7ZkvdcbqhjgRMEwp7GzGFvLej+aObFMobt5yszRlbWEkbxmQmdBSp/XKihpWFWUsOGw1dh6ihZNgh138iFrL9HUlxTm7cihtGqAJxR8JicZ0rdMAfb3UUXCH+cvAKY+Qdk0ix2WZ/UBbwyqm8IAAAA=[0m[Pipeline] withEnv
+[8mha:////4FF/rgBj6HRv9UoGMRGYSzjfZ2HJAQ/Ar+v+LsS8sqs2AAAAph+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUwIiYukZZOEFoQkgb/V9+UtqJE3E17kBLJSY8WLYl673eUESGE7ETjcXWY6y96ELvpiQG4vYaaBANXURNGClYoeygyNhqqYqShUVZDisJa4t1oOjRJdjIRj90GTS68px42o4Scm/u8IRMTuSkOX3LyLC99SYS/jh/ATB2CfLdfrbD/Cw+y7kUycIAAAA=[0m[Pipeline] {
+[8mha:////4KNsw5ss0hTjwMQxHBVGvAnKyW19RjDLkMDubl1B2XunAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUCDbE1DXKwglCE0La6P/yk9JOnIircQdaKjHhwbItWe/1hiIynIidaCy2HmPtRRd6NyUxELfXQINo6CJqwkjBCmUHRcZWS1WULCzKclhJWFusA0WPLsFGNvqhy6DRlefE03aUkHtzhydkciInzelbRobtrTeR8Mf5C4CxS5Dv9rMd5mfxAbNWnxXCAAAA[0m[Pipeline] stage
+[8mha:////4Ia1oVqHyV7vzl9GsFIcRGict+Ee0PPf/I8pmQnC79R6AAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUSDAhpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD5WQ+PfCAAAA[0m[Pipeline] { (Maven Check)
+[8mha:////4LYpaXuL86ORQZPlGl6NqSQoEN1Rqx5U8bb0vgoVuG83AAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUDLAgpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD/s94rDCAAAA[0m[Pipeline] script
+[8mha:////4MeXHPmwNoUSNPeUSfTjqrgeTmB1ETdQjROA+Dn+QhZ9AAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohULDAgpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD1+IXOLCAAAA[0m[Pipeline] {
+[8mha:////4JVUu2RbtLQjFTwYmEIwbhxFQ0LBtcspw2+yilCwx4qjAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiKpAQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGPIUG53n9qHNxXfVKy+AAAA[0m[Pipeline] sh
++ docker --version
+Docker version 28.3.3, build 980b856
+[8mha:////4EEYXpb85GPGnzYchLRZng8m1g+BSoeKkp9ppgAb7JskAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiKoQQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGPIUG53n9qHN1TuT7W+AAAA[0m[Pipeline] sh
++ docker info
+Client: Docker Engine - Community
+ Version:    28.3.3
+ Context:    default
+ Debug Mode: false
+ Plugins:
+  buildx: Docker Buildx (Docker Inc.)
+    Version:  v0.26.1
+    Path:     /usr/libexec/docker/cli-plugins/docker-buildx
+  compose: Docker Compose (Docker Inc.)
+    Version:  v2.39.1
+    Path:     /usr/libexec/docker/cli-plugins/docker-compose
+
+Server:
+ Containers: 4
+  Running: 4
+  Paused: 0
+  Stopped: 0
+ Images: 6
+ Server Version: 28.3.2
+ Storage Driver: overlayfs
+  driver-type: io.containerd.snapshotter.v1
+ Logging Driver: json-file
+ Cgroup Driver: cgroupfs
+ Cgroup Version: 2
+ Plugins:
+  Volume: local
+  Network: bridge host ipvlan macvlan null overlay
+  Log: awslogs fluentd gcplogs gelf journald json-file local splunk syslog
+ CDI spec directories:
+  /etc/cdi
+  /var/run/cdi
+ Discovered Devices:
+  cdi: docker.com/gpu=webgpu
+ Swarm: inactive
+ Runtimes: io.containerd.runc.v2 nvidia runc
+ Default Runtime: runc
+ Init Binary: docker-init
+ containerd version: 05044ec0a9a75232cad458027ca83437aae3f4da
+ runc version: v1.2.5-0-g59923ef
+ init version: de40ad0
+ Security Options:
+  seccomp
+   Profile: builtin
+  cgroupns
+ Kernel Version: 6.6.87.2-microsoft-standard-WSL2
+ Operating System: Docker Desktop
+ OSType: linux
+ Architecture: x86_64
+ CPUs: 16
+ Total Memory: 7.449GiB
+ Name: docker-desktop
+ ID: 667c9ee8-f37d-43d5-b54a-d886139dd34f
+ Docker Root Dir: /var/lib/docker
+ Debug Mode: false
+ HTTP Proxy: http.docker.internal:3128
+ HTTPS Proxy: http.docker.internal:3128
+ No Proxy: hubproxy.docker.internal
+ Labels:
+  com.docker.desktop.address=npipe://\\.\pipe\docker_cli
+ Experimental: false
+ Insecure Registries:
+  hubproxy.docker.internal:5555
+  ::1/128
+  127.0.0.0/8
+ Live Restore Enabled: false
+
+WARNING: DOCKER_INSECURE_NO_IPTABLES_RAW is set
+[8mha:////4E6JcyPA/ciWpNRI1goCzaVtY9cMRsC38taZic1Ni8iqAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOICNBQoFa3lhheYxBgn1l2wHZyKF/E1/oBFJCq2WO1sM683LIOHmr3BTlNvKTQWBzeavDCx76+OE3Z8wYYpsNModZLc6tOMkqOGOUUJCwErTY3jYMlEWItOPVTlFJnqHH3+jgJK297hCYXI5qh8/MLkYXMb28D08/wVwDREKHeHXPvt8AFE68tmvgAAAA==[0m[Pipeline] sh
++ pwd
+/var/jenkins_home/workspace/6510110357
+[8mha:////4GriHruzuW83ocBK6k7J2R+yr1jOiR7ti42diszihFipAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKi0FAgqrRWGl5gYmOcWHfGdkgqXsTX+AMWkajYYrWzzbzesI4BThwM9poGS7Gz6N1o8sKJw3B1PGHPF+yYIjuNrZ5aVrpZsOWkYUlRwkrARlPnOFoyCbailw9ZOUmmOqeQv6OA0qo7PKEQ2ZxkSF+YA+xuo4pMP89fAcw+QVkfcu1r/wEF2tB/vgAAAA==[0m[Pipeline] sh
++ ls -la
+total 16
+drwxr-xr-x 1 jenkins jenkins 4096 Aug 30 21:33 .
+drwxr-xr-x 1 jenkins jenkins 4096 Aug 30 21:23 ..
+drwxr-xr-x 1 jenkins jenkins 4096 Aug 30 21:33 .git
+-rw-r--r-- 1 jenkins jenkins  729 Aug 30 21:22 Dockerfile
+-rw-r--r-- 1 jenkins jenkins 4570 Aug 30 21:33 Jenkinsfile
+drwxr-xr-x 1 jenkins jenkins 4096 Aug 30 21:33 jenkins_home
+drwxr-xr-x 1 jenkins jenkins 4096 Aug 30 21:23 lab02
+drwxr-xr-x 1 jenkins jenkins 4096 Aug 30 21:23 lab03
+-rw-r--r-- 1 jenkins jenkins 2933 Aug 30 21:23 pom.xml
+drwxr-xr-x 1 jenkins jenkins 4096 Aug 30 21:23 src
+drwxr-xr-x 1 jenkins jenkins 4096 Aug 30 21:23 target
+[8mha:////4FDE9jFCXjja4KBtTt8Pg69wEXFgINGdJt5Pi1ndGYcRAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPMIRaSgQVVorDS8w8WGcWHfGdkgqXsTX+AMWkajYYrWzzbzesI4BThyM6JEGS7GzwrvR5CUmDsPV8SR6voiOKbJD0eLUssZmwZYTwpKihJWEDVLnOFoyCbayVw9VOUWmOqeQv6OE0uo7PKGQ2ZxUSF+YA+xuo45MP89fAcw+Qbk/5Kpr/wHGif1UvgAAAA==[0m[Pipeline] sh
++ find . -name pom.xml -type f
+./jenkins_home/plugins/ant/META-INF/maven/org.jenkins-ci.plugins/ant/pom.xml
+./jenkins_home/plugins/antisamy-markup-formatter/META-INF/maven/org.jenkins-ci.plugins/antisamy-markup-formatter/pom.xml
+./jenkins_home/plugins/apache-httpcomponents-client-4-api/META-INF/maven/org.jenkins-ci.plugins/apache-httpcomponents-client-4-api/pom.xml
+./jenkins_home/plugins/asm-api/META-INF/maven/io.jenkins.plugins/asm-api/pom.xml
+./jenkins_home/plugins/bootstrap5-api/META-INF/maven/io.jenkins.plugins/bootstrap5-api/pom.xml
+./jenkins_home/plugins/bouncycastle-api/META-INF/maven/org.jenkins-ci.plugins/bouncycastle-api/pom.xml
+./jenkins_home/plugins/branch-api/META-INF/maven/org.jenkins-ci.plugins/branch-api/pom.xml
+./jenkins_home/plugins/build-timeout/META-INF/maven/org.jenkins-ci.plugins/build-timeout/pom.xml
+./jenkins_home/plugins/caffeine-api/META-INF/maven/io.jenkins.plugins/caffeine-api/pom.xml
+./jenkins_home/plugins/checks-api/META-INF/maven/io.jenkins.plugins/checks-api/pom.xml
+./jenkins_home/plugins/cloudbees-folder/META-INF/maven/org.jenkins-ci.plugins/cloudbees-folder/pom.xml
+./jenkins_home/plugins/commons-lang3-api/META-INF/maven/io.jenkins.plugins/commons-lang3-api/pom.xml
+./jenkins_home/plugins/commons-text-api/META-INF/maven/io.jenkins.plugins/commons-text-api/pom.xml
+./jenkins_home/plugins/credentials/META-INF/maven/org.jenkins-ci.plugins/credentials/pom.xml
+./jenkins_home/plugins/credentials-binding/META-INF/maven/org.jenkins-ci.plugins/credentials-binding/pom.xml
+./jenkins_home/plugins/dark-theme/META-INF/maven/io.jenkins.plugins/dark-theme/pom.xml
+./jenkins_home/plugins/display-url-api/META-INF/maven/org.jenkins-ci.plugins/display-url-api/pom.xml
+./jenkins_home/plugins/durable-task/META-INF/maven/org.jenkins-ci.plugins/durable-task/pom.xml
+./jenkins_home/plugins/echarts-api/META-INF/maven/io.jenkins.plugins/echarts-api/pom.xml
+./jenkins_home/plugins/eddsa-api/META-INF/maven/io.jenkins.plugins/eddsa-api/pom.xml
+./jenkins_home/plugins/email-ext/META-INF/maven/org.jenkins-ci.plugins/email-ext/pom.xml
+./jenkins_home/plugins/font-awesome-api/META-INF/maven/io.jenkins.plugins/font-awesome-api/pom.xml
+./jenkins_home/plugins/git/META-INF/maven/org.jenkins-ci.plugins/git/pom.xml
+./jenkins_home/plugins/git-client/META-INF/maven/org.jenkins-ci.plugins/git-client/pom.xml
+./jenkins_home/plugins/github/META-INF/maven/com.coravy.hudson.plugins.github/github/pom.xml
+./jenkins_home/plugins/github-api/META-INF/maven/org.jenkins-ci.plugins/github-api/pom.xml
+./jenkins_home/plugins/github-branch-source/META-INF/maven/org.jenkins-ci.plugins/github-branch-source/pom.xml
+./jenkins_home/plugins/gradle/META-INF/maven/org.jenkins-ci.plugins/gradle/pom.xml
+./jenkins_home/plugins/gson-api/META-INF/maven/io.jenkins.plugins/gson-api/pom.xml
+./jenkins_home/plugins/instance-identity/META-INF/maven/org.jenkins-ci.modules/instance-identity/pom.xml
+./jenkins_home/plugins/ionicons-api/META-INF/maven/io.jenkins.plugins/ionicons-api/pom.xml
+./jenkins_home/plugins/jackson2-api/META-INF/maven/org.jenkins-ci.plugins/jackson2-api/pom.xml
+./jenkins_home/plugins/jakarta-activation-api/META-INF/maven/io.jenkins.plugins/jakarta-activation-api/pom.xml
+./jenkins_home/plugins/jakarta-mail-api/META-INF/maven/io.jenkins.plugins/jakarta-mail-api/pom.xml
+./jenkins_home/plugins/javax-activation-api/META-INF/maven/io.jenkins.plugins/javax-activation-api/pom.xml
+./jenkins_home/plugins/jaxb/META-INF/maven/io.jenkins.plugins/jaxb/pom.xml
+./jenkins_home/plugins/jjwt-api/META-INF/maven/io.jenkins.plugins/jjwt-api/pom.xml
+./jenkins_home/plugins/joda-time-api/META-INF/maven/io.jenkins.plugins/joda-time-api/pom.xml
+./jenkins_home/plugins/jquery3-api/META-INF/maven/io.jenkins.plugins/jquery3-api/pom.xml
+./jenkins_home/plugins/json-api/META-INF/maven/io.jenkins.plugins/json-api/pom.xml
+./jenkins_home/plugins/json-path-api/META-INF/maven/io.jenkins.plugins/json-path-api/pom.xml
+./jenkins_home/plugins/jsoup/META-INF/maven/org.jenkins-ci.plugins/jsoup/pom.xml
+./jenkins_home/plugins/junit/META-INF/maven/org.jenkins-ci.plugins/junit/pom.xml
+./jenkins_home/plugins/ldap/META-INF/maven/org.jenkins-ci.plugins/ldap/pom.xml
+./jenkins_home/plugins/mailer/META-INF/maven/org.jenkins-ci.plugins/mailer/pom.xml
+./jenkins_home/plugins/matrix-auth/META-INF/maven/org.jenkins-ci.plugins/matrix-auth/pom.xml
+./jenkins_home/plugins/matrix-project/META-INF/maven/org.jenkins-ci.plugins/matrix-project/pom.xml
+./jenkins_home/plugins/metrics/META-INF/maven/org.jenkins-ci.plugins/metrics/pom.xml
+./jenkins_home/plugins/mina-sshd-api-common/META-INF/maven/io.jenkins.plugins.mina-sshd-api/mina-sshd-api-common/pom.xml
+./jenkins_home/plugins/mina-sshd-api-core/META-INF/maven/io.jenkins.plugins.mina-sshd-api/mina-sshd-api-core/pom.xml
+./jenkins_home/plugins/okhttp-api/META-INF/maven/io.jenkins.plugins/okhttp-api/pom.xml
+./jenkins_home/plugins/pipeline-build-step/META-INF/maven/org.jenkins-ci.plugins/pipeline-build-step/pom.xml
+./jenkins_home/plugins/pipeline-github-lib/META-INF/maven/org.jenkins-ci.plugins/pipeline-github-lib/pom.xml
+./jenkins_home/plugins/pipeline-graph-view/META-INF/maven/io.jenkins.plugins/pipeline-graph-view/pom.xml
+./jenkins_home/plugins/pipeline-groovy-lib/META-INF/maven/io.jenkins.plugins/pipeline-groovy-lib/pom.xml
+./jenkins_home/plugins/pipeline-input-step/META-INF/maven/org.jenkins-ci.plugins/pipeline-input-step/pom.xml
+./jenkins_home/plugins/pipeline-milestone-step/META-INF/maven/org.jenkins-ci.plugins/pipeline-milestone-step/pom.xml
+./jenkins_home/plugins/pipeline-model-api/META-INF/maven/org.jenkinsci.plugins/pipeline-model-api/pom.xml
+./jenkins_home/plugins/pipeline-model-definition/META-INF/maven/org.jenkinsci.plugins/pipeline-model-definition/pom.xml
+./jenkins_home/plugins/pipeline-model-extensions/META-INF/maven/org.jenkinsci.plugins/pipeline-model-extensions/pom.xml
+./jenkins_home/plugins/pipeline-stage-step/META-INF/maven/org.jenkins-ci.plugins/pipeline-stage-step/pom.xml
+./jenkins_home/plugins/pipeline-stage-tags-metadata/META-INF/maven/org.jenkinsci.plugins/pipeline-stage-tags-metadata/pom.xml
+./jenkins_home/plugins/plain-credentials/META-INF/maven/org.jenkins-ci.plugins/plain-credentials/pom.xml
+./jenkins_home/plugins/plugin-util-api/META-INF/maven/io.jenkins.plugins/plugin-util-api/pom.xml
+./jenkins_home/plugins/resource-disposer/META-INF/maven/org.jenkins-ci.plugins/resource-disposer/pom.xml
+./jenkins_home/plugins/scm-api/META-INF/maven/org.jenkins-ci.plugins/scm-api/pom.xml
+./jenkins_home/plugins/script-security/META-INF/maven/org.jenkins-ci.plugins/script-security/pom.xml
+./jenkins_home/plugins/snakeyaml-api/META-INF/maven/io.jenkins.plugins/snakeyaml-api/pom.xml
+./jenkins_home/plugins/ssh-credentials/META-INF/maven/org.jenkins-ci.plugins/ssh-credentials/pom.xml
+./jenkins_home/plugins/ssh-slaves/META-INF/maven/org.jenkins-ci.plugins/ssh-slaves/pom.xml
+./jenkins_home/plugins/structs/META-INF/maven/org.jenkins-ci.plugins/structs/pom.xml
+./jenkins_home/plugins/theme-manager/META-INF/maven/io.jenkins.plugins/theme-manager/pom.xml
+./jenkins_home/plugins/timestamper/META-INF/maven/org.jenkins-ci.plugins/timestamper/pom.xml
+./jenkins_home/plugins/token-macro/META-INF/maven/org.jenkins-ci.plugins/token-macro/pom.xml
+./jenkins_home/plugins/trilead-api/META-INF/maven/org.jenkins-ci.plugins/trilead-api/pom.xml
+./jenkins_home/plugins/variant/META-INF/maven/org.jenkins-ci.plugins/variant/pom.xml
+./jenkins_home/plugins/workflow-aggregator/META-INF/maven/org.jenkins-ci.plugins.workflow/workflow-aggregator/pom.xml
+./jenkins_home/plugins/workflow-api/META-INF/maven/org.jenkins-ci.plugins.workflow/workflow-api/pom.xml
+./jenkins_home/plugins/workflow-basic-steps/META-INF/maven/org.jenkins-ci.plugins.workflow/workflow-basic-steps/pom.xml
+./jenkins_home/plugins/workflow-cps/META-INF/maven/org.jenkins-ci.plugins.workflow/workflow-cps/pom.xml
+./jenkins_home/plugins/workflow-durable-task-step/META-INF/maven/org.jenkins-ci.plugins.workflow/workflow-durable-task-step/pom.xml
+./jenkins_home/plugins/workflow-job/META-INF/maven/org.jenkins-ci.plugins.workflow/workflow-job/pom.xml
+./jenkins_home/plugins/workflow-multibranch/META-INF/maven/org.jenkins-ci.plugins.workflow/workflow-multibranch/pom.xml
+./jenkins_home/plugins/workflow-scm-step/META-INF/maven/org.jenkins-ci.plugins.workflow/workflow-scm-step/pom.xml
+./jenkins_home/plugins/workflow-step-api/META-INF/maven/org.jenkins-ci.plugins.workflow/workflow-step-api/pom.xml
+./jenkins_home/plugins/workflow-support/META-INF/maven/org.jenkins-ci.plugins.workflow/workflow-support/pom.xml
+./jenkins_home/plugins/ws-cleanup/META-INF/maven/org.jenkins-ci.plugins/ws-cleanup/pom.xml
+./jenkins_home/war/META-INF/maven/org.jenkins-ci.main/jenkins-war/pom.xml
+./pom.xml
+[8mha:////4PjcX7sRhFQVpXJHbpL4EdzGJm3Hw12KsDUil7gvpdQ2AAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIioKBAqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDu9rm2hw8pWvI/vgAAAA==[0m[Pipeline] }
+[8mha:////4MHXbZ0bQI+nGCPas2fQXdw6zAmiYO1STKhJ3TBfx0onAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiEKJBqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDu9rm2hw8HWvBVvgAAAA==[0m[Pipeline] // script
+[8mha:////4Dc9iN/1914At6e30wpyufMU6seKulKzi2Rhl4UGmNpiAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIikFIhqrRWGl5gYmOcWHfGdkgqXsTX+AMWkajYYrWzzbzesI4BThwM9poGS7Gz6N1o8sKJw3B1PGHPF+yYIjuNrZ5aVrpZsOWkYUlRwkrARlPnOFoyCbailw9ZOUmmOqeQv6OA0qo7PKEQ2ZxkSF+YA+xuo4pMP89fAczeJygPda59/QEY2KUHvgAAAA==[0m[Pipeline] }
+[8mha:////4KWAH0RJsq4XIdeL6iyolkTsQJtRxLgb5fIX1ppp5Jo+AAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiEKJBqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDuDrm2+w8gmjb2vgAAAA==[0m[Pipeline] // stage
+[8mha:////4EUaG9vyRYJb/0kDLazquxcp/5qqB+LdaJwJi06AEE5JAAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUwMCAOrFGXThBaEJIGv1fkpR04kRcjTsQqMSEB8u2ZL3nC6rgoSGvmVXYGwydYYMbdU4ske8vjhKzdGYdYSCnWKtSS1Id59pSVDCrKGHBYamwcxQM6ggrbsVd1E6grk/R5+3AoTTyBg8oeCZH4eO3TB7W11EGwh/nLwCmIUK52WXb7j/P6g2APuOiwgAAAA==[0m[Pipeline] stage
+[8mha:////4HzCxULVImXQJguJ/Z0fMJSpCJ+RTwzQtotuINnGDCrUAAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUYgEJMXWNsnCC0ISQNvq//KS0EyfiatyBlkpMeLBsS9Z7vaGIDCdiJxqLrcdYe9GF3k1JDMTtNdAgGrqImjBSsELZQZGx1VIVJQuLshxWEtYW60DRo0uwkY1+6DJodOU58bQdJeTe3OEJmZzISXP6lpFhe+tNJPxx/gJg7BLku/1sh/lZfAAnLfKUwgAAAA==[0m[Pipeline] { (Build)
+[8mha:////4AjZGtkfUW/a8ZTynAy5SaQujIWmXGYxhqh8/VXyCm88AAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUYgIhpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD0QKVszCAAAA[0m[Pipeline] script
+[8mha:////4KIixk5nFpPcgy/pwtLIafNezpnZpNw28kM1DLBbfhn2AAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycogUwYRQJ9aoCycITQhJo/9LkpJOnIircQcClZjwYNmWrPd8QRU8NOQ1swp7g6EzbHCjzokl8v3FUWKWzqwjDOQUa1VqSarjXFuKCmYVJSw4LBV2joJBHWHFrbiL2gnU9Sn6vB04lEbe4AEFz+QofPyWycP6OspA+OP8BcA0RCi3+2y7zedZvQH4j6CMwgAAAA==[0m[Pipeline] {
+[8mha:////4F+4WjUfh67O8XSBskWi+/0cipkPudUH6Frgrp7MbCkJAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOICokRUaS03vMDExjix7oztkFS8iK/xBwKRqNhitbPNPF+wTBGOHC22hjpHqXEYfG+nhQPH7uJ5wJbP2DAl9galGSRrU88oORuYU5SwELAy1HhOjmyGtWjVXVVeka1OOU7fQUDp9A0eUIjJnFXMXxgjbK69Tkw/z18BjCFDud9+ahfewYmQ+b4AAAA=[0m[Pipeline] sh
++ [ -f /var/jenkins_home/workspace/6510110357/pom.xml ]
++ echo Found pom.xml in workspace
+Found pom.xml in workspace
++ docker run --rm -v /var/jenkins_home/workspace/6510110357:/workspace -w /workspace maven:3.9.9 mvn clean compile test -DskipTests=false
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  0.089 s
+[INFO] Finished at: 2025-08-30T21:33:37Z
+[INFO] ------------------------------------------------------------------------
+[ERROR] The goal you specified requires a project to execute but there is no POM in this directory (/workspace). Please verify you invoked Maven from the correct directory. -> [Help 1]
+[ERROR] 
+[ERROR] To see the full stack trace of the errors, re-run Maven with the -e switch.
+[ERROR] Re-run Maven using the -X switch to enable full debug logging.
+[ERROR] 
+[ERROR] For more information about the errors and possible solutions, please read the following articles:
+[ERROR] [Help 1] http://cwiki.apache.org/confluence/display/MAVEN/MissingProjectException
+[8mha:////4AXODb/nGcmiQG0DECRYcwooF9LCJYau9SngQ+qlze+hAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCoERUaS03vMDExjix7oztkFS8iK/xBwKRqNhitbPNPF+wTBGOHC22hjpHqXEYfG+nhQPH7uJ5wJbP2DAl9galGSRrU88oORuYU5SwELAy1HhOjmyGtWjVXVVeka1OOU7fQUDp9A0eUIjJnFXMXxgjbK69Tkw/z18BjCFDud9+ahfeAtq90r4AAAA=[0m[Pipeline] echo
+Build failed: script returned exit code 1
+[8mha:////4BqSW2LTVDX8brXnKx/F13H7dABGc7aaavFEoJxc4zYfAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKClBJR0VppeIFJjLFj3Tm2g1PxIr7GHwhEomKL1c4283zBOgY4ctBoFfWGYmvQu1HPCzOH/uo4o+ULtkyRncJG5YY7dVqw4aRgSVHCSsBGUes4GtIJtsLKu6ycJF2dU5i/g4DSdAM8oBCzOcmQvjAF2N3GLjL9PH8FMHmfoKzrT+3fvKbXNb4AAAA=[0m[Pipeline] }
+[8mha:////4LeBaZxuYAB04tm2vhtboySni1Vd91YpGdobt63+dFvAAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiAQ1CqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDu9rm2hw/hHxVIvgAAAA==[0m[Pipeline] // script
+[8mha:////4I+uYiGL8dePUN5jiRwrpkeMT7mjVHrqJj1mxzc7/rbDAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIigZCQUCpayw0vMIkxTqy7YDs4FS/ia/wBi0hUbLHa2WZeb1gGDzV7g52m3lJoLA5uNHlhYt9fHSfs+IINU2CnUeokudWnGSVHDXOKEhYCVpoax8GSibAWnXqoyiky1Tn6/B0FlLa9wxMKkc1R+fiFycPmNraB6ef5K4BpGCKUu32u7eED0vxO9L4AAAA=[0m[Pipeline] }
+[8mha:////4HTzNNi0Pr9jRPU1WIZA5Z8nS8nPNdDzcSqaLIvjt5vMAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIigQQFSkVrueEFJjHGiXUXbAen4kV8jT9gEYmKLVY728zrDcvgoWZvsNPUWwqNxcGNJi9M7Pur44QdX7BhCuw0Sp0kt/o0o+SoYU5RwkLASlPjOFgyEdaiUw9VOUWmOkefv6OA0rZ3eEIhsjkqH78wedjcxjYw/Tx/BTANQ4Ryt8+1PXwA7ZNl4r4AAAA=[0m[Pipeline] // stage
+[8mha:////4M3aD1e2yvYNZ+8o5GRG+kk/aPX4ra1RMx5MxvVZo+1hAAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUqAMDYuoaZeEEIQkhbfR/SVLaiRNxNe5AoBITHizbkvWeL6higCMFyzqDvcOoHBv8aHNiE4X+4mliHZ2ZIozkDRNmEqRNu1RBycCiooQVh7VB5Sk6tAk2vJN3WXuJtj6lkLcDh9LpGzyg4JmcZEjfMgfYXkcdCX+cvwCYhwTlrsnW7D/P6g00NZQEwgAAAA==[0m[Pipeline] stage
+[8mha:////4HxjVqH/P1BkT4Ah1ckt+0LNhHkwNTmpIAbwU7U4/hm5AAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0YAAJMXWNsnCC0ISQNvq//KS0EyfiatyBlkpMeLBsS9Z7vaGIDCdiJxqLrcdYe9GF3k1JDMTtNdAgGrqImjBSsELZQZGx1VIVJQuLshxWEtYW60DRo0uwkY1+6DJodOU58bQdJeTe3OEJmZzISXP6lpFhe+tNJPxx/gJg7BLku/1sh/lZfAD8aiCpwgAAAA==[0m[Pipeline] { (Package)
+Stage "Package" skipped due to earlier failure(s)
+[8mha:////4Mu3Yncc0UEr2tVDgbzdDq8tDLhBSJzUgS/tR/YNl/98AAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJS0IAQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGPIUG53n9qHN65NpgK+AAAA[0m[Pipeline] getContext
+[8mha:////4BRgDO5y4Uldm6wByFJuauN70r6yY4Bpr7IfSYmkrRyXAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCBAUSSkVrueEFJjHGiXUXbAen4kV8jT9gEYmKLVY728zrDcvgoWZvsNPUWwqNxcGNJi9M7Pur44QdX7BhCuw0Sp0kt/o0o+SoYU5RwkLASlPjOFgyEdaiUw9VOUWmOkefv6OA0rZ3eEIhsjkqH78wedjcxjYw/Tx/BTANQ4Ryv821O3wArmI/eL4AAAA=[0m[Pipeline] }
+[8mha:////4NIWWwabyYwSR+0ld2amcH6cSOFsbD+8KAt5jj7OS4SlAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiBBIFSkVrueEFJjHGiXUXbAen4kV8jT9gEYmKLVY728zrDcvgoWZvsNPUWwqNxcGNJi9M7Pur44QdX7BhCuw0Sp0kt/o0o+SoYU5RwkLASlPjOFgyEdaiUw9VOUWmOkefv6OA0rZ3eEIhsjkqH78wedjcxjYw/Tx/BTANQ4Ryv821O3wAmqzcI74AAAA=[0m[Pipeline] // stage
+[8mha:////4CCMFNaeB76XODJj9GMLqCKCod7csIDSIIy6TTVxIA4QAAAAqB+LCAAAAAAAAP9tjT0OwjAUg1+LOrAycohU/GyoE2vUhROEJoSk0XslSUknTsTVuAOBSkx4sGxL1vd8QRU8NOQ1swp7g6EzbHCjzokl8v3FUWKWzqwjDOQUa1VqSarjXFuKCmYVJSw4LBV2joJBHWHFrbiL2gnU9Sn6vB04lEbe4AEFz+QofPyWycP6OspA+OP8BcA0RCg3u2z77edZvQEJmv6RwgAAAA==[0m[Pipeline] stage
+[8mha:////4ISuDof2FFrzB9j9oKChwn8Qwr6FFP1/6st4bo/pP5OmAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUAjbE1DXKwglCE0La6P/yk9JOnIircQdaKjHhwbItWe/1hiIynIidaCy2HmPtRRd6NyUxELfXQINo6CJqwkjBCmUHRcZWS1WULCzKclhJWFusA0WPLsFGNvqhy6DRlefE03aUkHtzhydkciInzelbRobtrTeR8Mf5C4CxS5AfdrPt52fxAXzhjwPCAAAA[0m[Pipeline] { (SonarQube)
+Stage "SonarQube" skipped due to earlier failure(s)
+[8mha:////4NF2e4Lpb4ttzABoR4d4lTuw23czdk1NehKUHkTNLjMDAAAAox+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJSkA5R0VppeIFJjLFj3Tm2g1PxIr7GHwhEomKL1c4283zBOgY4ctBoFfWGYmvQu1HPCzOH/uo4o+ULtkyRncJG5YY7dVqw4aRgSVHCSsBGUes4GtIJtsLKu6ycJF2dU5i/g4DSdAM8oBCzOcmQvjAF2N3GLjL9PH8FMPkEZb3/VO3fhXiFur4AAAA=[0m[Pipeline] getContext
+[8mha:////4E5NLMiwLJ0onhPTT7qRIoR605WiNSMMuUsIJBOOzIzWAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJSABWiSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwhQ7nbf2r7BlK8YfC+AAAA[0m[Pipeline] }
+[8mha:////4OUJMTCzsA7Wye1aO9RKAiGZTeO2uNNf/YT6m7K1TfFBAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIiIUSDqNJabniBiY1xYt0Z2yGpeBFf4w8EIlGxxWpnm3m+YJkiHDlabA11jlLjMPjeTgsHjt3F84Atn7FhSuwNSjNI1qaeUXI2MKcoYSFgZajxnBzZDGvRqruqvCJbnXKcvoOA0ukbPKAQkzmrmL8wRthce52Yfp6/AhhDyFDu9p/avgFq/vIBvgAAAA==[0m[Pipeline] // stage
+[8mha:////4C33cyY8ejJelZIzaMdoe0DTmhnJmL3t1StCue6VWmc8AAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycohUCCQG1Ik16sIJQhNC0uj/kqSkEyfiatyBQCUmPFi2Jes9X1AFDw15zazC3mDoDBvcqHNiiXx/cZSYpTPrCAM5xVqVWpLqONeWooJZRQkLDkuFnaNgUEdYcSvuonYCdX2KPm8HDqWRN3hAwTM5Ch+/ZfKwvo4yEP44fwEwDRHKzTbbbv95Vm+6CzPBwgAAAA==[0m[Pipeline] stage
+[8mha:////4DL/igH8OsASx5htk6gZZnvNo/5DQQS0GnZMDdJNqYNiAAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0QQIJMXWNsnCC0ISQNvq//KS0EyfiatyBlkpMeLBsS9Z7vaGIDCdiJxqLrcdYe9GF3k1JDMTtNdAgGrqImjBSsELZQZGx1VIVJQuLshxWEtYW60DRo0uwkY1+6DJodOU58bQdJeTe3OEJmZzISXP6lpFhe+tNJPxx/gJg7BLku/1sh/lZfAD9vR8YwgAAAA==[0m[Pipeline] { (Declarative: Post Actions)
+[8mha:////4IXATq7Xevi/sornMVQ1iPJiA2wFBQ1iUI9OkRtk/SCZAAAApx+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoh0YQAhpq5RFk4QmhDSRv+Xn5R24kRcjTvQUokJD5ZtyXqvNxSR4UTsRGOx9RhrL7rQuymJgbi9BhpEQxdRE0YKVig7KDK2WqqiZGFRlsNKwtpiHSh6dAk2stEPXQaNrjwnnrajhNybOzwhkxM5aU7fMjJsb72JhD/OXwCMXYJ8t5/tMD+LD56au0DCAAAA[0m[Pipeline] script
+[8mha:////4KzQdh+bmsLSR6EMm0v2ZFfTiVwiJloxYfDIMyx69dyJAAAAqB+LCAAAAAAAAP9tjTEOwjAUQ3+LOrAycoiUAQaEOrFGXThBaEJIGv1fkpR04kRcjTsQqMSEB8u2ZL3nC6rgoSGvmVXYGwydYYMbdU4ske8vjhKzdGYdYSCnWKtSS1Id59pSVDCrKGHBYamwcxQM6ggrbsVd1E6grk/R5+3AoTTyBg8oeCZH4eO3TB7W11EGwh/nLwCmIUK53WfbbT7P6g0iH00AwgAAAA==[0m[Pipeline] {
+[8mha:////4BUWgpifCC5NWmIqZvDasjfi9aw2RfOKw1PTd2Zu2Qt+AAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOICBRWiSmu54QUmNsaJdWdsh6TiRXyNPxCIRMUWq51t5vmCZYpw5GixNdQ5So3D4Hs7LRw4dhfPA7Z8xoYpsTcozSBZm3pGydnAnKKEhYCVocZzcmQzrEWr7qryimx1ynH6DgJKp2/wgEJM5qxi/sIYYXPtdWL6ef4KYAwZyv32U7vwBvT8cju+AAAA[0m[Pipeline] sh
++ + docker psxargs -r -aq --filter docker stop name=maven-
+
++ docker ps+ xargs -aq --filter -r docker name=maven-
+ rm -f
+[8mha:////4HCohD3lqWHQbjKCTPf8rXEAK3VuVVJVxk3s3nNMxGYrAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKCkKgQVVrLDS8wsTFOrDtjOyQVL+Jr/IFAJCq2WO1sM88XLFOEI0eLraHOUWocBt/baeHAsbt4HrDlMzZMib1BaQbJ2tQzSs4G5hQlLASsDDWekyObYS1adVeVV2SrU47TdxBQOn2DBxRiMmcV8xfGCJtrrxPTz/NXAGMIGcr97lPbN6XnAcu+AAAA[0m[Pipeline] }
+[8mha:////4BrdrSjqwoIvJX7TyEb85lZMqKirpk6WsteH7v+g9+w8AAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOJSAAVCqWgtN7zAJMY4se6C7eBUvIiv8QcsIlGxxWpnm3m9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDut7l2hw/lvZpgvgAAAA==[0m[Pipeline] // script
+[8mha:////4LAgfqEtdj4BDhw0CSPgUHcR+bL7W+FOxV8D1HpqiahbAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOLSBAkJUaW10vACExvjxLoztkNS8SK+xh+wiETFFqudbeb1hnUMcOJgsNc0WIqdRe9GkxdOHIar4wl7vmDHFNlpbPXUstLNgi0nDUuKElYCNpo6x9GSSbAVvXzIykky1TmF/B0FlFbd4QmFyOYkQ/rCHGB3G1Vk+nn+CmD2Ccr6kGtf+w9IRkC5vgAAAA==[0m[Pipeline] echo
+Pipeline failed!
+[8mha:////4BnwgfzQ7LR53EHkHglv6/j+b+SaHX/rK5bqygGYzQGqAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPMJpiISEqNJaaXiBiQ/jxLoztkNS8SK+xh+wiETFFqudbeb1hnUMcOJgRI80WIqdFd6NJi8xcRiujifR80V0TJEdihanljU2C7acEJYUJawkbJA6x9GSSbCVvXqoyiky1TmF/B0llFbf4QmFzOakQvrCHGB3G3Vk+nn+CmD2PkFZ17n2hw9ubsTBvgAAAA==[0m[Pipeline] }
+[8mha:////4PvTLZJNFdZ6yZfO/2vdFytDFszm3Kb2KuOJE04Z/DquAAAApR+LCAAAAAAAAP9tjTsOwjAQRDdBFLSUHGLT8ClQKlrLDScwiTFOrN1gOzgVJ+Jq3AGLSFRMMZo3zXu9YRk81OwNdpp6S6GxOLjR5IWJfX91nLDjCzZMgZ1GqZPkVp9mlBw1zClKWAhYaWocB0smwlp06qEqp8hU5+jzdxRQ2vYOTyhENkfl4xcmD5vb2Aamn+evAKZhiFDu9rm2hw9RAe/XvgAAAA==[0m[Pipeline] // stage
+[8mha:////4P4D5G1a4Snjt98G57aIEtgE+6PiVz0uJ1F+dyAjEf2QAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIihBAFSkVrueEFJjHGiXUXbAen4kV8jT9gEYmKLVY728zrDcvgoWZvsNPUWwqNxcGNJi9M7Pur44QdX7BhCuw0Sp0kt/o0o+SoYU5RwkLASlPjOFgyEdaiUw9VOUWmOkefv6OA0rZ3eEIhsjkqH78wedjcxjYw/Tx/BTANQ4Ryf8i13X0AqOKpZr4AAAA=[0m[Pipeline] }
+[8mha:////4KycTvCufQ1MZGFsLxMO3kGLL0yFRdqqp311jBjeTphlAAAAph+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOIikJCQUCpayw0vMIkxTqy7YDs4FS/ia/wBi0hUbLHa2WZeb1gGDzV7g52m3lJoLA5uNHlhYt9fHSfs+IINU2CnUeokudWnGSVHDXOKEhYCVpoax8GSibAWnXqoyiky1Tn6/B0FlLa9wxMKkc1R+fiFycPmNraB6ef5K4BpGCKU+0Ou7e4D62D44L4AAAA=[0m[Pipeline] // withEnv
+[8mha:////4AZ8sUy/R0WBL8knLjMDy7fR6pJgkin6++aBjz1C7oVJAAAApR+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOKiFBQIUaW10vACExvjxLoztkNS8SK+xh+wiETFFqudbeb1hnUMcOJgsNc0WIqdRe9GkxdOHIar4wl7vmDHFNlpbPXUstLNgi0nDUuKElYCNpo6x9GSSbAVvXzIykky1TmF/B0FlFbd4QmFyOYkQ/rCHGB3G1Vk+nn+CmD2PkG5P+Sq6w/04q2yvgAAAA==[0m[Pipeline] }
+[8mha:////4H9uRSUpUPu9IGEqrmj2ePFNZcV8SUJBacTw7V1OTdKXAAAApB+LCAAAAAAAAP9tjTEOwjAQBC9BFLSUPOISGhpEldZKwwtMbIwT687YDknFi/gaf8AiEhVbrHa2mdcb1jHAiYPBXtNgKXYWvRtNXjhxGK6OJ+z5gh1TZKex1VPLSjcLtpw0LClKWAnYaOocR0smwVb08iErJ8lU5xTydxRQWnWHJxQim5MM6QtzgN1tVJHp5/krgNn7BOWhzrWvPzeZTdO+AAAA[0m[Pipeline] // withEnv
+[8mha:////4IBJuFJEYVkc50C1qKuSz92W68T3xG8n/FzxIV80QxEcAAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMIREqJBVLRWGl5gEmOcWHfBvpBUvIiv8QciIlGx1c4083pjmSKOHJ1qLLWeUuVVF3o3PTVwbK+BB9XwRVVMiYNVpR1Kru1pxpLFYl6WY6GxslQFTp6cYK0b8zBFMOSKs8TJHTRyX9/xRKanspgoXxgjNre+Tky/zt8Axq4T5PutINt9AI0yIPK9AAAA[0m[Pipeline] }
+[8mha:////4FxX1kzypUU331E0lblnt88yjHu0h0sGCp6D1ytJGFJGAAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMKRQKJBVLRWGl5gEmOcWHfBvpBUvIiv8QciIlGx1c4083pjmSKOHJ1qLLWeUuVVF3o3PTVwbK+BB9XwRVVMiYNVpR1Kru1pxpLFYl6WY6GxslQFTp6cYK0b8zBFMOSKs8TJHTRyX9/xRKanspgoXxgjNre+Tky/zt8Axq4T5PutINt9AP7d5Cu9AAAA[0m[Pipeline] // node
+[8mha:////4C0adQhiFKHuxfkWzOv+PPsAYkMlztecV3YQXuzTboTBAAAApB+LCAAAAAAAAP9tjTEOwjAQBDdBFLSUPMKRQKJBVLRWGl5gEmOcWHfBvpBUvIiv8QciIlGx1c4083pjmSKOHJ1qLLWeUuVVF3o3PTVwbK+BB9XwRVVMiYNVpR1Kru1pxpLFYl6WY6GxslQFTp6cYK0b8zBFMOSKs8TJHTRyX9/xRKanspgoXxgjNre+Tky/zt8Axq4T5PudINt+ANjEg2G9AAAA[0m[Pipeline] End of Pipeline
+ERROR: script returned exit code 1
+Finished: FAILURE
