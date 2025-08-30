@@ -31,13 +31,16 @@ pipeline {
                 script {
                     try {
                         sh '''
-                        # Alternative approach: Use docker cp instead of volume mounts
+                        # Alternative approach: Use docker cp with a long-running container
                         echo "=== Host workspace contents ==="
                         ls -la "${WORKSPACE}"
                         
-                        # Create a temporary container
-                        docker create --name maven-build-temp -w /app maven:3.9.9 sleep 30
+                        # Create a container that stays alive longer
+                        docker create --name maven-build-temp -w /app maven:3.9.9 tail -f /dev/null
                         docker start maven-build-temp
+                        
+                        # Give it a moment to start
+                        sleep 2
                         
                         # Copy files to container
                         docker cp "${WORKSPACE}/." maven-build-temp:/app/
@@ -71,8 +74,11 @@ pipeline {
                     try {
                         sh '''
                         # Create container for packaging
-                        docker create --name maven-package-temp -w /app maven:3.9.9 sleep 30
+                        docker create --name maven-package-temp -w /app maven:3.9.9 tail -f /dev/null
                         docker start maven-package-temp
+                        
+                        # Give it a moment to start
+                        sleep 2
                         
                         # Copy files to container
                         docker cp "${WORKSPACE}/." maven-package-temp:/app/
@@ -107,8 +113,11 @@ pipeline {
                     try {
                         sh '''
                         # Create container for SonarQube analysis with network access
-                        docker create --name maven-sonar-temp --network host -w /app maven:3.9.9 sleep 30
+                        docker create --name maven-sonar-temp --network host -w /app maven:3.9.9 tail -f /dev/null
                         docker start maven-sonar-temp
+                        
+                        # Give it a moment to start
+                        sleep 2
                         
                         # Copy files to container
                         docker cp "${WORKSPACE}/." maven-sonar-temp:/app/

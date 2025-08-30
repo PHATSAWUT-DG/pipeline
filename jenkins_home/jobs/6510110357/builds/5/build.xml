@@ -1,0 +1,662 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-build plugin="workflow-job@1540.v295eccc9778f">
+  <actions>
+    <hudson.model.CauseAction>
+      <causeBag class="linked-hash-map">
+        <entry>
+          <hudson.model.Cause_-UserIdCause>
+            <userId>admin</userId>
+          </hudson.model.Cause_-UserIdCause>
+          <int>1</int>
+        </entry>
+      </causeBag>
+    </hudson.model.CauseAction>
+    <jenkins.metrics.impl.TimeInQueueAction plugin="metrics@4.2.33-484.v2fcd689980d1">
+      <queuingDurationMillis>15</queuingDurationMillis>
+      <blockedDurationMillis>0</blockedDurationMillis>
+      <buildableDurationMillis>0</buildableDurationMillis>
+      <waitingDurationMillis>6</waitingDurationMillis>
+    </jenkins.metrics.impl.TimeInQueueAction>
+    <org.jenkinsci.plugins.workflow.libs.LibrariesAction plugin="pipeline-groovy-lib@752.vdddedf804e72">
+      <libraries/>
+    </org.jenkinsci.plugins.workflow.libs.LibrariesAction>
+    <org.jenkinsci.plugins.pipeline.modeldefinition.actions.ExecutionModelAction plugin="pipeline-model-definition@2.2265.v140e610fe9d5">
+      <stagesUUID>fc56d4b4-a149-47c2-adbf-7e1d96240e18</stagesUUID>
+      <pipelineDefs>
+        <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTPipelineDef plugin="pipeline-model-api@2.2265.v140e610fe9d5">
+          <stages>
+            <stages>
+              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+                <name>Maven Check</name>
+                <branches>
+                  <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                    <name>default</name>
+                    <steps>
+                      <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                        <name>script</name>
+                        <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                          <arguments class="linked-hash-map">
+                            <entry>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                                <key>scriptBlock</key>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                                <value class="string">try {
+                        sh &apos;docker --version&apos;
+                        sh &apos;docker info&apos;
+                        sh &apos;pwd&apos;
+                        sh &apos;ls -la&apos;
+                        sh &apos;find . -name &quot;pom.xml&quot; -type f&apos;
+                    } catch (Exception e) {
+                        echo &quot;Docker access issue: ${e.getMessage()}&quot;
+                        error &quot;Docker is not accessible. Please check Docker permissions.&quot;
+                    }</value>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                            </entry>
+                          </arguments>
+                        </args>
+                      </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                    </steps>
+                  </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                </branches>
+              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+                <name>Build</name>
+                <branches>
+                  <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                    <name>default</name>
+                    <steps>
+                      <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                        <name>script</name>
+                        <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                          <arguments class="linked-hash-map">
+                            <entry>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                                <key>scriptBlock</key>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                                <value class="string">try {
+                        sh &apos;&apos;&apos;
+                        # Alternative approach: Use docker cp instead of volume mounts
+                        echo &quot;=== Host workspace contents ===&quot;
+                        ls -la &quot;${WORKSPACE}&quot;
+                        
+                        # Create a temporary container
+                        docker create --name maven-build-temp -w /app maven:3.9.9 sleep 30
+                        docker start maven-build-temp
+                        
+                        # Copy files to container
+                        docker cp &quot;${WORKSPACE}/.&quot; maven-build-temp:/app/
+                        
+                        # Verify files are copied
+                        docker exec maven-build-temp sh -c &quot;echo &apos;Container contents:&apos; &amp;&amp; ls -la /app &amp;&amp; echo &apos;pom.xml check:&apos; &amp;&amp; ls -la /app/pom.xml&quot;
+                        
+                        # Run Maven build
+                        docker exec maven-build-temp mvn clean compile test -DskipTests=false
+                        
+                        # Cleanup
+                        docker stop maven-build-temp
+                        docker rm maven-build-temp
+                        &apos;&apos;&apos;
+                    } catch (Exception e) {
+                        sh &apos;&apos;&apos;
+                        # Cleanup on error
+                        docker stop maven-build-temp 2&gt;/dev/null || true
+                        docker rm maven-build-temp 2&gt;/dev/null || true
+                        &apos;&apos;&apos;
+                        echo &quot;Build failed: ${e.getMessage()}&quot;
+                        throw e
+                    }</value>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                            </entry>
+                          </arguments>
+                        </args>
+                      </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                    </steps>
+                  </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                </branches>
+              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+                <name>Package</name>
+                <branches>
+                  <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                    <name>default</name>
+                    <steps>
+                      <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                        <name>script</name>
+                        <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                          <arguments class="linked-hash-map">
+                            <entry>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                                <key>scriptBlock</key>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                                <value class="string">try {
+                        sh &apos;&apos;&apos;
+                        # Create container for packaging
+                        docker create --name maven-package-temp -w /app maven:3.9.9 sleep 30
+                        docker start maven-package-temp
+                        
+                        # Copy files to container
+                        docker cp &quot;${WORKSPACE}/.&quot; maven-package-temp:/app/
+                        
+                        # Run Maven package
+                        docker exec maven-package-temp mvn package -DskipTests=true
+                        
+                        # Copy target folder back to workspace
+                        mkdir -p &quot;${WORKSPACE}/target&quot; || true
+                        docker cp maven-package-temp:/app/target/. &quot;${WORKSPACE}/target/&quot; || echo &quot;No target directory to copy&quot;
+                        
+                        # Cleanup
+                        docker stop maven-package-temp
+                        docker rm maven-package-temp
+                        &apos;&apos;&apos;
+                    } catch (Exception e) {
+                        sh &apos;&apos;&apos;
+                        # Cleanup on error
+                        docker stop maven-package-temp 2&gt;/dev/null || true
+                        docker rm maven-package-temp 2&gt;/dev/null || true
+                        &apos;&apos;&apos;
+                        echo &quot;Package failed: ${e.getMessage()}&quot;
+                        throw e
+                    }</value>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                            </entry>
+                          </arguments>
+                        </args>
+                      </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                    </steps>
+                  </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                </branches>
+              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+                <name>SonarQube</name>
+                <branches>
+                  <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                    <name>default</name>
+                    <steps>
+                      <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                        <name>script</name>
+                        <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                          <arguments class="linked-hash-map">
+                            <entry>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                                <key>scriptBlock</key>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                                <value class="string">try {
+                        sh &apos;&apos;&apos;
+                        # Create container for SonarQube analysis with network access
+                        docker create --name maven-sonar-temp --network host -w /app maven:3.9.9 sleep 30
+                        docker start maven-sonar-temp
+                        
+                        # Copy files to container
+                        docker cp &quot;${WORKSPACE}/.&quot; maven-sonar-temp:/app/
+                        
+                        # Run SonarQube analysis
+                        docker exec maven-sonar-temp mvn clean verify sonar:sonar \
+                          -Dsonar.projectKey=${PROJECT_KEY} \
+                          -Dsonar.projectName=&quot;${PROJECT_NAME}&quot; \
+                          -Dsonar.host.url=${SONAR_HOST_URL} \
+                          -Dsonar.token=${SONAR_TOKEN}
+                        
+                        # Cleanup
+                        docker stop maven-sonar-temp
+                        docker rm maven-sonar-temp
+                        &apos;&apos;&apos;
+                    } catch (Exception e) {
+                        sh &apos;&apos;&apos;
+                        # Cleanup on error
+                        docker stop maven-sonar-temp 2&gt;/dev/null || true
+                        docker rm maven-sonar-temp 2&gt;/dev/null || true
+                        &apos;&apos;&apos;
+                        echo &quot;SonarQube analysis failed: ${e.getMessage()}&quot;
+                        throw e
+                    }</value>
+                              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                            </entry>
+                          </arguments>
+                        </args>
+                      </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                    </steps>
+                  </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBranch>
+                </branches>
+              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStage>
+            </stages>
+            <uuid>fc56d4b4-a149-47c2-adbf-7e1d96240e18</uuid>
+          </stages>
+          <postBuild>
+            <conditions>
+              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBuildCondition>
+                <condition>always</condition>
+                <branch>
+                  <name>default</name>
+                  <steps>
+                    <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                      <name>script</name>
+                      <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                        <arguments class="linked-hash-map">
+                          <entry>
+                            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <key>scriptBlock</key>
+                            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                              <value class="string">try {
+                    // Clean up any remaining containers
+                    sh &apos;&apos;&apos;
+                    # Stop and remove any leftover containers
+                    for container in maven-build-temp maven-package-temp maven-sonar-temp; do
+                        docker stop $container 2&gt;/dev/null || echo &quot;Container $container not running&quot;
+                        docker rm $container 2&gt;/dev/null || echo &quot;Container $container not found&quot;
+                    done
+                    
+                    # Generic cleanup for any maven containers
+                    docker ps -aq --filter &quot;name=maven-&quot; | xargs -r docker stop 2&gt;/dev/null || echo &quot;No maven containers to stop&quot;
+                    docker ps -aq --filter &quot;name=maven-&quot; | xargs -r docker rm -f 2&gt;/dev/null || echo &quot;No maven containers to clean&quot;
+                    &apos;&apos;&apos;
+                } catch (Exception e) {
+                    echo &quot;Cleanup warning: ${e.getMessage()}&quot;
+                }</value>
+                            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                          </entry>
+                        </arguments>
+                      </args>
+                    </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTScriptBlock>
+                  </steps>
+                </branch>
+              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBuildCondition>
+              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBuildCondition>
+                <condition>success</condition>
+                <branch>
+                  <name>default</name>
+                  <steps>
+                    <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                      <name>echo</name>
+                      <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                        <arguments class="linked-hash-map">
+                          <entry>
+                            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <key>message</key>
+                            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                              <value class="string">Pipeline completed successfully!</value>
+                            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                          </entry>
+                        </arguments>
+                      </args>
+                    </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                    <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                      <name>echo</name>
+                      <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                        <arguments class="linked-hash-map">
+                          <entry>
+                            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <key>message</key>
+                            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-GStringValue>
+                              <value class="string">&quot;SonarQube Analysis: ${SONAR_HOST_URL}/dashboard?id=${PROJECT_KEY}&quot;</value>
+                            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-GStringValue>
+                          </entry>
+                        </arguments>
+                      </args>
+                    </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                  </steps>
+                </branch>
+              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBuildCondition>
+              <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBuildCondition>
+                <condition>failure</condition>
+                <branch>
+                  <name>default</name>
+                  <steps>
+                    <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                      <name>echo</name>
+                      <args class="org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTNamedArgumentList">
+                        <arguments class="linked-hash-map">
+                          <entry>
+                            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                              <key>message</key>
+                            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                            <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                              <value class="string">Pipeline failed!</value>
+                            </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                          </entry>
+                        </arguments>
+                      </args>
+                    </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTStep>
+                  </steps>
+                </branch>
+              </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTBuildCondition>
+            </conditions>
+          </postBuild>
+          <environment>
+            <variables class="linked-hash-map">
+              <entry>
+                <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                  <key>SONAR_TOKEN</key>
+                </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                  <value class="string">sqp_4baffa57a1e9bd4f1ae289ac790fb6ca4fdbd487</value>
+                </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+              </entry>
+              <entry>
+                <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                  <key>SONAR_HOST_URL</key>
+                </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                  <value class="string">http://172.17.0.3:9000</value>
+                </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+              </entry>
+              <entry>
+                <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                  <key>PROJECT_KEY</key>
+                </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                  <value class="string">test</value>
+                </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+              </entry>
+              <entry>
+                <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                  <key>PROJECT_NAME</key>
+                </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTKey>
+                <org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+                  <value class="string">test</value>
+                </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTValue_-ConstantValue>
+              </entry>
+            </variables>
+          </environment>
+          <agent>
+            <agentType>
+              <key>any</key>
+            </agentType>
+          </agent>
+        </org.jenkinsci.plugins.pipeline.modeldefinition.ast.ModelASTPipelineDef>
+      </pipelineDefs>
+    </org.jenkinsci.plugins.pipeline.modeldefinition.actions.ExecutionModelAction>
+    <hudson.plugins.git.util.BuildData plugin="git@5.7.0">
+      <buildsByBranchName>
+        <entry>
+          <string>refs/remotes/origin/main</string>
+          <hudson.plugins.git.util.Build>
+            <marked plugin="git-client@6.3.2">
+              <sha1>0b33d96c469cb12676a9eb6bfdd47a6096e850ac</sha1>
+              <branches class="list">
+                <hudson.plugins.git.Branch>
+                  <sha1 reference="../../../sha1"/>
+                  <name>refs/remotes/origin/main</name>
+                </hudson.plugins.git.Branch>
+              </branches>
+            </marked>
+            <revision reference="../marked"/>
+            <hudsonBuildNumber>5</hudsonBuildNumber>
+          </hudson.plugins.git.util.Build>
+        </entry>
+      </buildsByBranchName>
+      <lastBuild reference="../buildsByBranchName/entry/hudson.plugins.git.util.Build"/>
+      <remoteUrls>
+        <string>https://github.com/PHATSAWUT-DG/pipeline.git</string>
+      </remoteUrls>
+    </hudson.plugins.git.util.BuildData>
+    <org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState plugin="workflow-scm-step@437.v05a_f66b_e5ef8">
+      <revisionStates>
+        <entry>
+          <string>git https://github.com/PHATSAWUT-DG/pipeline.git</string>
+          <hudson.scm.SCMRevisionState_-None/>
+        </entry>
+      </revisionStates>
+    </org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState>
+    <jenkins.metrics.impl.SubTaskTimeInQueueAction plugin="metrics@4.2.33-484.v2fcd689980d1">
+      <queuingDurationMillis>48</queuingDurationMillis>
+      <blockedDurationMillis>0</blockedDurationMillis>
+      <buildableDurationMillis>47</buildableDurationMillis>
+      <waitingDurationMillis>0</waitingDurationMillis>
+      <executingDurationMillis>63537</executingDurationMillis>
+      <workUnitCount>1</workUnitCount>
+    </jenkins.metrics.impl.SubTaskTimeInQueueAction>
+  </actions>
+  <queueId>8</queueId>
+  <timestamp>1756589738223</timestamp>
+  <startTime>1756589738290</startTime>
+  <result>FAILURE</result>
+  <duration>67826</duration>
+  <charset>UTF-8</charset>
+  <keepLog>false</keepLog>
+  <execution class="org.jenkinsci.plugins.workflow.cps.CpsFlowExecution">
+    <result>FAILURE</result>
+    <script>pipeline {
+    agent any
+    
+    environment {
+        SONAR_TOKEN = &apos;sqp_4baffa57a1e9bd4f1ae289ac790fb6ca4fdbd487&apos;
+        SONAR_HOST_URL = &apos;http://172.17.0.3:9000&apos;
+        PROJECT_KEY = &apos;test&apos;
+        PROJECT_NAME = &apos;test&apos;
+    }
+
+    stages {
+        stage(&apos;Maven Check&apos;) {
+            steps {
+                script {
+                    try {
+                        sh &apos;docker --version&apos;
+                        sh &apos;docker info&apos;
+                        sh &apos;pwd&apos;
+                        sh &apos;ls -la&apos;
+                        sh &apos;find . -name &quot;pom.xml&quot; -type f&apos;
+                    } catch (Exception e) {
+                        echo &quot;Docker access issue: ${e.getMessage()}&quot;
+                        error &quot;Docker is not accessible. Please check Docker permissions.&quot;
+                    }
+                }
+            }
+        }
+        
+        stage(&apos;Build&apos;) {
+            steps {
+                script {
+                    try {
+                        sh &apos;&apos;&apos;
+                        # Alternative approach: Use docker cp instead of volume mounts
+                        echo &quot;=== Host workspace contents ===&quot;
+                        ls -la &quot;${WORKSPACE}&quot;
+                        
+                        # Create a temporary container
+                        docker create --name maven-build-temp -w /app maven:3.9.9 sleep 30
+                        docker start maven-build-temp
+                        
+                        # Copy files to container
+                        docker cp &quot;${WORKSPACE}/.&quot; maven-build-temp:/app/
+                        
+                        # Verify files are copied
+                        docker exec maven-build-temp sh -c &quot;echo &apos;Container contents:&apos; &amp;&amp; ls -la /app &amp;&amp; echo &apos;pom.xml check:&apos; &amp;&amp; ls -la /app/pom.xml&quot;
+                        
+                        # Run Maven build
+                        docker exec maven-build-temp mvn clean compile test -DskipTests=false
+                        
+                        # Cleanup
+                        docker stop maven-build-temp
+                        docker rm maven-build-temp
+                        &apos;&apos;&apos;
+                    } catch (Exception e) {
+                        sh &apos;&apos;&apos;
+                        # Cleanup on error
+                        docker stop maven-build-temp 2&gt;/dev/null || true
+                        docker rm maven-build-temp 2&gt;/dev/null || true
+                        &apos;&apos;&apos;
+                        echo &quot;Build failed: ${e.getMessage()}&quot;
+                        throw e
+                    }
+                }
+            }
+        }
+        
+        stage(&apos;Package&apos;) {
+            steps {
+                script {
+                    try {
+                        sh &apos;&apos;&apos;
+                        # Create container for packaging
+                        docker create --name maven-package-temp -w /app maven:3.9.9 sleep 30
+                        docker start maven-package-temp
+                        
+                        # Copy files to container
+                        docker cp &quot;${WORKSPACE}/.&quot; maven-package-temp:/app/
+                        
+                        # Run Maven package
+                        docker exec maven-package-temp mvn package -DskipTests=true
+                        
+                        # Copy target folder back to workspace
+                        mkdir -p &quot;${WORKSPACE}/target&quot; || true
+                        docker cp maven-package-temp:/app/target/. &quot;${WORKSPACE}/target/&quot; || echo &quot;No target directory to copy&quot;
+                        
+                        # Cleanup
+                        docker stop maven-package-temp
+                        docker rm maven-package-temp
+                        &apos;&apos;&apos;
+                    } catch (Exception e) {
+                        sh &apos;&apos;&apos;
+                        # Cleanup on error
+                        docker stop maven-package-temp 2&gt;/dev/null || true
+                        docker rm maven-package-temp 2&gt;/dev/null || true
+                        &apos;&apos;&apos;
+                        echo &quot;Package failed: ${e.getMessage()}&quot;
+                        throw e
+                    }
+                }
+            }
+        }
+        
+        stage(&apos;SonarQube&apos;) {
+            steps {
+                script {
+                    try {
+                        sh &apos;&apos;&apos;
+                        # Create container for SonarQube analysis with network access
+                        docker create --name maven-sonar-temp --network host -w /app maven:3.9.9 sleep 30
+                        docker start maven-sonar-temp
+                        
+                        # Copy files to container
+                        docker cp &quot;${WORKSPACE}/.&quot; maven-sonar-temp:/app/
+                        
+                        # Run SonarQube analysis
+                        docker exec maven-sonar-temp mvn clean verify sonar:sonar \
+                          -Dsonar.projectKey=${PROJECT_KEY} \
+                          -Dsonar.projectName=&quot;${PROJECT_NAME}&quot; \
+                          -Dsonar.host.url=${SONAR_HOST_URL} \
+                          -Dsonar.token=${SONAR_TOKEN}
+                        
+                        # Cleanup
+                        docker stop maven-sonar-temp
+                        docker rm maven-sonar-temp
+                        &apos;&apos;&apos;
+                    } catch (Exception e) {
+                        sh &apos;&apos;&apos;
+                        # Cleanup on error
+                        docker stop maven-sonar-temp 2&gt;/dev/null || true
+                        docker rm maven-sonar-temp 2&gt;/dev/null || true
+                        &apos;&apos;&apos;
+                        echo &quot;SonarQube analysis failed: ${e.getMessage()}&quot;
+                        throw e
+                    }
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            script {
+                try {
+                    // Clean up any remaining containers
+                    sh &apos;&apos;&apos;
+                    # Stop and remove any leftover containers
+                    for container in maven-build-temp maven-package-temp maven-sonar-temp; do
+                        docker stop $container 2&gt;/dev/null || echo &quot;Container $container not running&quot;
+                        docker rm $container 2&gt;/dev/null || echo &quot;Container $container not found&quot;
+                    done
+                    
+                    # Generic cleanup for any maven containers
+                    docker ps -aq --filter &quot;name=maven-&quot; | xargs -r docker stop 2&gt;/dev/null || echo &quot;No maven containers to stop&quot;
+                    docker ps -aq --filter &quot;name=maven-&quot; | xargs -r docker rm -f 2&gt;/dev/null || echo &quot;No maven containers to clean&quot;
+                    &apos;&apos;&apos;
+                } catch (Exception e) {
+                    echo &quot;Cleanup warning: ${e.getMessage()}&quot;
+                }
+            }
+        }
+        success {
+            echo &apos;Pipeline completed successfully!&apos;
+            echo &quot;SonarQube Analysis: ${SONAR_HOST_URL}/dashboard?id=${PROJECT_KEY}&quot;
+        }
+        failure {
+            echo &apos;Pipeline failed!&apos;
+        }
+    }
+}
+</script>
+    <loadedScripts class="linked-hash-map"/>
+    <durabilityHint>MAX_SURVIVABILITY</durabilityHint>
+    <timings class="map">
+      <entry>
+        <string>flowNode</string>
+        <long>2681357084</long>
+      </entry>
+      <entry>
+        <string>classLoad</string>
+        <long>327474928</long>
+      </entry>
+      <entry>
+        <string>runQueue</string>
+        <long>20940029546</long>
+      </entry>
+      <entry>
+        <string>run</string>
+        <long>13910062713</long>
+      </entry>
+      <entry>
+        <string>parse</string>
+        <long>281693832</long>
+      </entry>
+      <entry>
+        <string>saveProgram</string>
+        <long>9361944463</long>
+      </entry>
+    </timings>
+    <internalCalls class="sorted-set">
+      <string>hudson.AbortException.getMessage</string>
+      <string>hudson.model.Result.fromString</string>
+      <string>org.jenkinsci.plugins.pipeline.StageStatus.TAG_NAME</string>
+      <string>org.jenkinsci.plugins.workflow.job.WorkflowRun.result</string>
+    </internalCalls>
+    <sandbox>true</sandbox>
+    <iota>64</iota>
+    <head>1:64</head>
+    <done>true</done>
+    <resumeBlocked>false</resumeBlocked>
+    <storageDir>workflow-completed</storageDir>
+  </execution>
+  <completed>true</completed>
+  <checkouts class="hudson.util.PersistedList">
+    <org.jenkinsci.plugins.workflow.job.WorkflowRun_-SCMCheckout>
+      <scm class="hudson.plugins.git.GitSCM" plugin="git@5.7.0">
+        <configVersion>2</configVersion>
+        <userRemoteConfigs>
+          <hudson.plugins.git.UserRemoteConfig>
+            <url>https://github.com/PHATSAWUT-DG/pipeline.git</url>
+          </hudson.plugins.git.UserRemoteConfig>
+        </userRemoteConfigs>
+        <branches>
+          <hudson.plugins.git.BranchSpec>
+            <name>*/main</name>
+          </hudson.plugins.git.BranchSpec>
+        </branches>
+        <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+        <submoduleCfg class="empty-list"/>
+        <extensions/>
+      </scm>
+      <node></node>
+      <workspace>/var/jenkins_home/workspace/6510110357</workspace>
+      <changelogFile>/var/jenkins_home/jobs/6510110357/builds/5/changelog11730430241841191942.xml</changelogFile>
+      <pollingBaseline class="hudson.scm.SCMRevisionState$None" reference="../../../actions/org.jenkinsci.plugins.workflow.steps.scm.MultiSCMRevisionState/revisionStates/entry/hudson.scm.SCMRevisionState_-None"/>
+    </org.jenkinsci.plugins.workflow.job.WorkflowRun_-SCMCheckout>
+  </checkouts>
+</flow-build>
