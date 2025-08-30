@@ -15,6 +15,9 @@ pipeline {
                     try {
                         sh 'docker --version'
                         sh 'docker info'
+                        sh 'pwd'
+                        sh 'ls -la'
+                        sh 'find . -name "pom.xml" -type f'
                     } catch (Exception e) {
                         echo "Docker access issue: ${e.getMessage()}"
                         error "Docker is not accessible. Please check Docker permissions."
@@ -28,9 +31,16 @@ pipeline {
                 script {
                     try {
                         sh '''
-                        # Use host network and proper Docker options
-                        docker run --rm -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
-                          mvn clean compile test -DskipTests=false
+                        # Use correct workspace path and check if pom.xml exists
+                        if [ -f "${WORKSPACE}/pom.xml" ]; then
+                            echo "Found pom.xml in workspace"
+                            docker run --rm -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
+                              mvn clean compile test -DskipTests=false
+                        else
+                            echo "pom.xml not found in workspace, listing files:"
+                            ls -la "${WORKSPACE}"
+                            exit 1
+                        fi
                         '''
                     } catch (Exception e) {
                         echo "Build failed: ${e.getMessage()}"
@@ -46,8 +56,13 @@ pipeline {
                     try {
                         sh '''
                         # Package the application
-                        docker run --rm -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
-                          mvn package -DskipTests=true
+                        if [ -f "${WORKSPACE}/pom.xml" ]; then
+                            docker run --rm -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
+                              mvn package -DskipTests=true
+                        else
+                            echo "pom.xml not found for packaging"
+                            exit 1
+                        fi
                         '''
                     } catch (Exception e) {
                         echo "Package failed: ${e.getMessage()}"
@@ -63,13 +78,18 @@ pipeline {
                     try {
                         sh '''
                         # Run SonarQube analysis with network access
-                        docker run --rm --network host \
-                          -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
-                          mvn clean verify sonar:sonar \
-                          -Dsonar.projectKey=${PROJECT_KEY} \
-                          -Dsonar.projectName="${PROJECT_NAME}" \
-                          -Dsonar.host.url=${SONAR_HOST_URL} \
-                          -Dsonar.token=${SONAR_TOKEN}
+                        if [ -f "${WORKSPACE}/pom.xml" ]; then
+                            docker run --rm --network host \
+                              -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
+                              mvn clean verify sonar:sonar \
+                              -Dsonar.projectKey=${PROJECT_KEY} \
+                              -Dsonar.projectName="${PROJECT_NAME}" \
+                              -Dsonar.host.url=${SONAR_HOST_URL} \
+                              -Dsonar.token=${SONAR_TOKEN}
+                        else
+                            echo "pom.xml not found for SonarQube analysis"
+                            exit 1
+                        fi
                         '''
                     } catch (Exception e) {
                         echo "SonarQube analysis failed: ${e.getMessage()}"
