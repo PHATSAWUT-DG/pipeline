@@ -9,107 +9,90 @@ pipeline {
     }
 
     stages {
-        stage('Maven Check') { //
+        stage('Maven Check') {
             steps {
-                sh 'docker run -i --rm maven:3.9.9 mvn --version'
+                script {
+                    try {
+                        sh 'docker --version'
+                        sh 'docker info'
+                    } catch (Exception e) {
+                        echo "Docker access issue: ${e.getMessage()}"
+                        error "Docker is not accessible. Please check Docker permissions."
+                    }
+                }
             }
         }
-        
-        // stage('Checkout') {
-        //     steps {
-        //         checkout scm
-        //     }
-        // }
-        
-        // stage('Verify Files') {
-        //     steps {
-        //         sh 'ls -la ${WORKSPACE}'
-        //         sh 'test -f ${WORKSPACE}/pom.xml && echo "pom.xml found" || echo "pom.xml NOT found"'
-        //         sh 'pwd'
-        //     }
-        // }
         
         stage('Build') {
             steps {
-                sh '''
-                # Create Maven container and copy files
-                docker create --name maven-build-temp -w /app maven:3.9.9 sleep 30
-                docker start maven-build-temp
-                docker cp ${WORKSPACE}/. maven-build-temp:/app/
-                docker exec maven-build-temp ls -la /app/
-                docker exec maven-build-temp mvn clean compile test
-                docker stop maven-build-temp
-                docker rm maven-build-temp
-                '''
-                
-                sh '''
-                # Create Maven container for packaging
-                docker create --name maven-package-temp -w /app maven:3.9.9 sleep 30
-                docker start maven-package-temp
-                docker cp ${WORKSPACE}/. maven-package-temp:/app/
-                docker exec maven-package-temp mvn package
-                # Copy target folder back
-                docker cp maven-package-temp:/app/target/. ${WORKSPACE}/target/
-                docker stop maven-package-temp
-                docker rm maven-package-temp
-                '''
+                script {
+                    try {
+                        sh '''
+                        # Use host network and proper Docker options
+                        docker run --rm -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
+                          mvn clean compile test -DskipTests=false
+                        '''
+                    } catch (Exception e) {
+                        echo "Build failed: ${e.getMessage()}"
+                        throw e
+                    }
+                }
             }
         }
         
-        // stage('Package') {
-        //     steps {
-        //         sh '''
-        //         # Create Maven container for packaging
-        //         docker create --name maven-package-temp -w /app maven:3.9.9 sleep 30
-        //         docker start maven-package-temp
-        //         docker cp ${WORKSPACE}/. maven-package-temp:/app/
-        //         docker exec maven-package-temp mvn package
-        //         # Copy target folder back
-        //         docker cp maven-package-temp:/app/target/. ${WORKSPACE}/target/
-        //         docker stop maven-package-temp
-        //         docker rm maven-package-temp
-        //         '''
-        //     }
-        
+        stage('Package') {
+            steps {
+                script {
+                    try {
+                        sh '''
+                        # Package the application
+                        docker run --rm -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
+                          mvn package -DskipTests=true
+                        '''
+                    } catch (Exception e) {
+                        echo "Package failed: ${e.getMessage()}"
+                        throw e
+                    }
+                }
+            }
+        }
         
         stage('SonarQube') {
             steps {
-                sh '''
-                # Create Maven container for SonarQube analysis
-                docker create --name maven-sonar-temp --network bridge -w /app maven:3.9.9 sleep 60
-                docker start maven-sonar-temp
-                docker cp ${WORKSPACE}/. maven-sonar-temp:/app/
-                docker exec maven-sonar-temp mvn clean verify sonar:sonar \
-                  -Dsonar.projectKey=${PROJECT_KEY} \
-                  -Dsonar.projectName="${PROJECT_NAME}" \
-                  -Dsonar.host.url=${SONAR_HOST_URL} \
-                  -Dsonar.token=${SONAR_TOKEN}
-                docker stop maven-sonar-temp
-                docker rm maven-sonar-temp
-                '''
+                script {
+                    try {
+                        sh '''
+                        # Run SonarQube analysis with network access
+                        docker run --rm --network host \
+                          -v "${WORKSPACE}:/workspace" -w /workspace maven:3.9.9 \
+                          mvn clean verify sonar:sonar \
+                          -Dsonar.projectKey=${PROJECT_KEY} \
+                          -Dsonar.projectName="${PROJECT_NAME}" \
+                          -Dsonar.host.url=${SONAR_HOST_URL} \
+                          -Dsonar.token=${SONAR_TOKEN}
+                        '''
+                    } catch (Exception e) {
+                        echo "SonarQube analysis failed: ${e.getMessage()}"
+                        throw e
+                    }
+                }
             }
         }
-        
-        // stage('Quality Gate') {
-        //     steps {
-        //         script {
-        //             timeout(time: 2, unit: 'MINUTES') {
-        //                 sleep 10
-        //                 echo "SonarQube analysis completed!"
-        //                 echo "Check the results at: ${SONAR_HOST_URL}/dashboard?id=${PROJECT_KEY}"
-        //             }
-        //         }
-        //     }
-        // }
     }
     
     post {
         always {
-            // Clean up any remaining containers
-            sh '''
-            docker ps -aq --filter "name=maven-" | xargs -r docker stop || echo "No containers to stop"
-            docker ps -aq --filter "name=maven-" | xargs -r docker rm -f || echo "No containers to clean"
-            '''
+            script {
+                try {
+                    // Clean up any remaining containers (if accessible)
+                    sh '''
+                    docker ps -aq --filter "name=maven-" | xargs -r docker stop || echo "No containers to stop"
+                    docker ps -aq --filter "name=maven-" | xargs -r docker rm -f || echo "No containers to clean"
+                    '''
+                } catch (Exception e) {
+                    echo "Cleanup warning: ${e.getMessage()}"
+                }
+            }
         }
         success {
             echo 'Pipeline completed successfully!'
